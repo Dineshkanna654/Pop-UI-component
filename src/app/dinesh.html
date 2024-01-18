@@ -1,0 +1,63 @@
+<div class="center-container">
+  <div class="open-popup">
+    <button (click)="openPopup()">Open Popup</button>
+  </div>
+</div>
+
+<div *ngIf="isPopupOpen" class="main">
+  <div class="popup">
+    <div class="head-container">
+      <div class="heading">
+        <h1>Choose Steps to include in report</h1>
+      </div>
+      <div class="head-icon">
+        <svg
+          width="42"
+          height="42"
+          viewBox="0 0 42 42"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.75 36.75H26.25M15.75 36.75V28M15.75 36.75H6.3C6.02152 36.75 5.75445 36.6394 5.55754 36.4425C5.36062 36.2455 5.25 35.9785 5.25 35.7V29.05C5.25 28.7715 5.36062 28.5045 5.55754 28.3075C5.75445 28.1106 6.02152 28 6.3 28H15.75M26.25 36.75V15.75M26.25 36.75H35.7C35.9785 36.75 36.2455 36.6394 36.4425 36.4425C36.6394 36.2455 36.75 35.9785 36.75 35.7V6.3C36.75 6.02152 36.6394 5.75445 36.4425 5.55754C36.2455 5.36062 35.9785 5.25 35.7 5.25H27.3C27.0215 5.25 26.7545 5.36062 26.5575 5.55754C26.3606 5.75445 26.25 6.02152 26.25 6.3V15.75M15.75 28V16.8C15.75 16.5215 15.8606 16.2545 16.0575 16.0575C16.2545 15.8606 16.5215 15.75 16.8 15.75H26.25"
+            stroke="#F30606"
+            stroke-width="1.25"
+          />
+        </svg>
+      </div>
+    </div>
+    <div class="hr"><hr /></div>
+
+    <div class="body-container">
+      <div class="grid-container">
+        <div
+          *ngFor="let obj of array; let index = index" 
+          class="elements objects"
+          (click)="handleClick(index)"
+          [class.active]="obj.selectState"
+        >
+        <div class="text-content">
+          <h2>Step {{ obj.id }}</h2>
+          <p class="para">{{obj.desc}}</p>
+        </div>
+          <div class="flag">
+            
+            <svg  *ngIf="obj.selectState" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 14C0 10.287 1.475 6.72601 4.1005 4.1005C6.72601 1.475 10.287 0 14 0C17.713 0 21.274 1.475 23.8995 4.1005C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28C10.287 28 6.72601 26.525 4.1005 23.8995C1.475 21.274 0 17.713 0 14ZM13.2011 19.992L21.2613 9.91573L19.8053 8.75093L12.9323 17.3395L8.064 13.2832L6.86933 14.7168L13.2011 19.9939V19.992Z" fill="#EBECFF"/>
+            </svg>
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="select-all-container">
+        <input type="checkbox" id="selectAll" name="selectAll" [(ngModel)]="selectAll" (ngModelChange)="handleSelectAll()"> 
+        <label for="selectAll">Select All</label>
+      </div>
+
+    <div class="close-btn">
+      <button (click)="closePopup()">Generate Report</button>
+    </div>
+  </div>
+</div>
