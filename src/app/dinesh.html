@@ -30,12 +30,12 @@
 
     <div class="body-container">
       <div class="grid-container">
-        <div
-          *ngFor="let obj of array; let index = index" 
-          class="elements objects"
-          (click)="handleClick(index)"
-          [class.active]="obj.selectState"
-        >
+          <div
+            *ngFor="let obj of array; let index = index" 
+            class="elements objects"
+            (click)="handleClick(index)"
+            [class.active]="obj.selectState"
+          >
         <div class="text-content">
           <h2>Step {{ obj.id }}</h2>
           <p class="para">{{obj.desc}}</p>
